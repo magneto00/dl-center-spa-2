@@ -1,0 +1,23 @@
+{
+  "name": "interacustics-strapi",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-i18n": "4.1.5",
+    "@strapi/plugin-users-permissions": "4.1.5",
+    "@strapi/strapi": "4.1.5",
+    "mysql": "2.18.1",
+    "sqlite3": "5.0.2",
+    "strapi-provider-upload-azure-storage": "^2.0.0",
+    "xlsx": "0.18.5"
+  },
+  "author": "BLBR",
+  "license": "ISC"
+}
