@@ -12,11 +12,11 @@ module.exports = {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint', 'prettier'],
+  plugins: ['react', '@typescript-eslint'],
   settings: {
     'import/resolver': {
       node: {
-        paths: ['./'],
+        moduleDirectory: ['node_modules', './'],
         extensions: ['.js', '.jsx', '.ts', '.tsx'],
       },
     },
