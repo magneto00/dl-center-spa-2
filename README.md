@@ -1,4 +1,6 @@
-# Download Center for Interacoustics
+# DL Center for Interacoustics
+
+Download center for Interacoustics.
 
 A SPA consisting of backend in Strapi and React on front. Created to modernize the process of software and documents distribution.
 

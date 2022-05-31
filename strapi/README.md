@@ -1,1 +1,1 @@
-# Admin Panel for Interacustics
+# Admin Panel for Interacoustics
