@@ -1,3 +1,7 @@
 'use strict';
 
-module.exports = {};
+const instruction = require('./instruction');
+
+module.exports = {
+  instruction,
+};

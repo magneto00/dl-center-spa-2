@@ -1,7 +1,7 @@
 'use strict';
 
-const myController = require('./my-controller');
+const instruction = require('./instruction');
 
 module.exports = {
-  myController,
+  instruction,
 };

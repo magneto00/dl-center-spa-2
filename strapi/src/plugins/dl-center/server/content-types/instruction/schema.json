@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "instructions",
+  "info": {
+    "singularName": "instruction",
+    "pluralName": "instructions",
+    "displayName": "Instruction"
+  },
+  "options": {
+    "draftAndPublish": false,
+    "comment": ""
+  },
+  "attributes": {
+    "device": {
+      "type": "string"
+    },
+    "country": {
+      "type": "string"
+    },
+    "language": {
+      "type": "string"
+    },
+    "software": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "uid": {
+      "type": "string",
+      "required": false,
+      "unique": true
+    }
+  }
+}
