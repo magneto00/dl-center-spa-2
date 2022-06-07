@@ -8,6 +8,7 @@ module.exports = {
         handler: 'instruction.index',
         config: {
           policies: [],
+          auth: false,
         },
       },
       {
@@ -16,14 +17,16 @@ module.exports = {
         handler: 'instruction.deleteAll',
         config: {
           policies: [],
+          auth: false,
         },
       },
       {
         method: 'POST',
-        path: '/create',
-        handler: 'instruction.create',
+        path: '/instructions',
+        handler: 'instruction.createManyInstructions',
         config: {
           policies: [],
+          auth: false,
         },
       },
     ],

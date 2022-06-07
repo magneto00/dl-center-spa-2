@@ -12,7 +12,7 @@ function HomePage() {
       <BaseHeaderLayout
         title="DL Center"
         subtitle="Here you can upload your file with instructions."
-        as="h2"
+        as="h1"
       />
       <ContentLayout>
         <Box background="neutral0" hasRadius shadow="filterShadow">
@@ -23,7 +23,7 @@ function HomePage() {
             padding={2}
           >
             <Box padding={2}>
-              <Typography variant="alpha">Upload instructions file</Typography>
+              <Typography variant="beta">Upload instructions file</Typography>
             </Box>
             <Box padding={2}>
               <Status>The file needs to have a proper structure.</Status>

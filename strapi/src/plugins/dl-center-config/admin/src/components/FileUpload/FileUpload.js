@@ -1,5 +1,5 @@
-import React, { memo, useState, useRef } from "react";
-import xlsx from "xlsx";
+import React, { memo, useState, useRef } from 'react';
+import xlsx from 'xlsx';
 
 export const FileUpload = () => {
   const [uploadSuccess, setUploadSuccess] = useState(false);
@@ -13,9 +13,9 @@ export const FileUpload = () => {
       const currentItem = currentWorkSheetContent[i];
 
       await fetch(`${process.env.STRAPI_DOMAIN}/api/instructions`, {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           data: {
@@ -34,11 +34,12 @@ export const FileUpload = () => {
         if (proceededXlsxRows === allXlsxRows) {
           setUploadSuccess(true);
           setIsUploading(false);
-          uploadInputRef.current.value = "";
+          uploadInputRef.current.value = '';
         }
       });
     }
   };
+
   const handleUploadFile = async (e) => {
     e.preventDefault();
     uploadSuccess && setUploadSuccess(false);
@@ -47,7 +48,7 @@ export const FileUpload = () => {
       const reader = new FileReader();
       reader.onload = (e) => {
         const data = e.target.result;
-        const workbook = xlsx.read(data, { type: "array" });
+        const workbook = xlsx.read(data, { type: 'array' });
         const sheetNames = workbook.SheetNames;
 
         sheetNames.forEach((sheetName) => {
@@ -63,7 +64,7 @@ export const FileUpload = () => {
   };
 
   return (
-    <div style={{ padding: "20px 0" }}>
+    <div style={{ padding: '20px 0' }}>
       <form>
         <label htmlFor="upload">Upload File</label>
         <input
@@ -74,10 +75,10 @@ export const FileUpload = () => {
           onChange={handleUploadFile}
         />
       </form>
-      <div style={{ padding: "10px 0" }}>
+      <div style={{ padding: '10px 0' }}>
         {isUploading && <p>Uploading in progress....</p>}
         {uploadSuccess && (
-          <p style={{ color: "green" }}>Upload finished successfully!</p>
+          <p style={{ color: 'green' }}>Upload finished successfully!</p>
         )}
       </div>
     </div>

@@ -2,11 +2,10 @@ import React, { memo, useState } from 'react';
 import xlsx from 'xlsx';
 import { Box } from '@strapi/design-system/Box';
 import { Typography } from '@strapi/design-system/Typography';
-import { Button } from '@strapi/design-system/Button';
-import { Flex } from '@strapi/design-system/Flex';
 import { Alert } from '@strapi/design-system/Alert';
-import { ProgressBar } from '@strapi/design-system/ProgressBar';
+import { Form } from './Form';
 import api from '../../api/api';
+import { FetchStatus } from '../../api/types';
 
 const ALLOWED_EXTENSIONS = [
   'vnd.openxmlformats-officedocument.spreadsheetml.sheet',
@@ -50,8 +49,8 @@ function getInstructionsFromSheets(sheets) {
   return data.flat();
 }
 
-function FileUploadForm() {
-  const [status, setStatus] = useState('idle');
+function Component() {
+  const [status, setStatus] = useState(FetchStatus.IDLE);
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
 
@@ -76,9 +75,13 @@ function FileUploadForm() {
     setError(null);
   }
 
+  function handleCloseSuccess() {
+    setStatus(FetchStatus.IDLE);
+  }
+
   async function handleSubmit(event) {
     try {
-      setStatus('pending');
+      setStatus(FetchStatus.PENDING);
       event.preventDefault();
 
       const sheets = await getSheetsFromFile(file);
@@ -87,7 +90,7 @@ function FileUploadForm() {
       await api.deleteAllInstructions();
       await api.createInstructions(data);
 
-      setStatus('resolved');
+      setStatus(FetchStatus.RESOLVED);
     } catch (e) {
       setError(e.message);
     }
@@ -111,20 +114,13 @@ function FileUploadForm() {
         </Box>
       )}
       <Box paddingTop={2}>
-        <form onSubmit={handleSubmit}>
-          <ProgressBar value={33}>33/100 plugins loaded</ProgressBar>
-          <input
-            type="file"
-            name="upload"
-            id="upload"
-            onChange={handleChange}
-          />
-          <Flex justifyContent="flex-end">
-            <Button disabled={!!error || !file} variant="danger" type="submit">
-              Update data ⚡
-            </Button>
-          </Flex>
-        </form>
+        <Form
+          status={status}
+          isButtonDisabled={!!error || !file}
+          handleChange={handleChange}
+          handleSubmit={handleSubmit}
+          handleCloseSuccess={handleCloseSuccess}
+        />
       </Box>
       <Typography variant="delta">{status}</Typography>
       <Typography variant="delta">{error}</Typography>
@@ -132,4 +128,4 @@ function FileUploadForm() {
   );
 }
 
-export default memo(FileUploadForm);
+export const FileUploadForm = memo(Component);

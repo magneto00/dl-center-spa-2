@@ -9394,7 +9394,7 @@ std-env@^2.2.1:
   dependencies:
     ci-info "^3.1.1"
 
-strapi-provider-upload-azure-storage@^2.0.0:
+strapi-provider-upload-azure-storage@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/strapi-provider-upload-azure-storage/-/strapi-provider-upload-azure-storage-2.0.0.tgz#487c750b8cdc3a0b5d3e450ec1277a0e4ff8b7d9"
   integrity sha512-Kjuq25HLuTeKKI8yWCPix5RZceQwBx3u5A+NHNCRxP9pC3NnRn1Yd1nAlSKkdB56fkWn5y72rErlaUIfk4tfig==

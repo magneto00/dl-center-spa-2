@@ -24,7 +24,7 @@ module.exports = createCoreController('plugin::dl-center.instruction', {
       });
     }
   },
-  async create(ctx) {
+  async createManyInstructions(ctx) {
     try {
       const data = ctx.request.body;
       const affected = await strapi
