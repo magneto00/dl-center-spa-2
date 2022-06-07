@@ -27,12 +27,18 @@ export default {
     fontFamily: `-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif`,
     baseFontSize: 10,
     fontSize: '1.6rem',
+    fontWeight: {
+      regular: 400,
+      bold: 700,
+    },
   },
   spacing: {
-    paddingX: '5rem',
-    paddingY: '5rem',
+    standard: '3rem',
   },
   containerWidth: {
     small: '65rem',
+  },
+  transition: {
+    quick: '0.3s ease',
   },
 };

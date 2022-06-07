@@ -1,2 +1,2 @@
-export { FormSection } from './FormSection/FormSection';
+export { DLCenter } from './DLCenter/DLCenter';
 export { Title } from './Title/Title';

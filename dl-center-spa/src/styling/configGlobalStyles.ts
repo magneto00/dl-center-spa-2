@@ -24,13 +24,18 @@ export default (theme: Theme) => {
       ...resetStyles.body,
       fontFamily: theme.typography.fontFamily,
       fontSize: theme.typography.fontSize,
+      lineHeight: 1.2,
       color: theme.colors.black,
     },
     h1: {
       ...resetStyles.h1,
       fontSize: '3.5rem',
-      fontWeight: 400,
+      fontWeight: theme.typography.fontWeight.regular,
       lineHeight: 1.2,
+    },
+    p: {
+      ...resetStyles.p,
+      marginBottom: '1.5rem',
     },
     input: {
       ...formField,

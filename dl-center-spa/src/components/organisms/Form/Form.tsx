@@ -4,18 +4,26 @@ import { Button } from 'src/components/atoms';
 import { FormFields } from 'src/components/molecules';
 import * as S from './Form.styled';
 
-export function Form() {
-  const methods = useForm();
+type Props = {
+  handleSubmitBtnClick: () => void;
+};
 
-  const handleOnSubmit = methods.handleSubmit((data) => {
-    console.log(data);
+export function Form({ handleSubmitBtnClick }: Props) {
+  const methods = useForm();
+  const handleOnSubmit = methods.handleSubmit((formData) => {
+    console.log(formData);
+    handleSubmitBtnClick();
   });
 
   return (
     <FormProvider {...methods}>
       <S.Form onSubmit={handleOnSubmit}>
         <FormFields formFields={configForm.formFields} />
-        <Button type="submit" label={configForm.submitButton.text} />
+        <Button
+          type="submit"
+          label={configForm.submitButton.text}
+          btnTheme="primary"
+        />
       </S.Form>
     </FormProvider>
   );

@@ -39,3 +39,10 @@ export type ConfigFormInterface = {
   formFields: Array<FormInputInterface | FormSelectInterface>;
   submitButton: { [index: string]: string };
 };
+
+export type FileInterface = {
+  title: string;
+  version: string;
+  language: string;
+  link: string;
+};
