@@ -4,7 +4,6 @@ export const Wrapper = styled('div')(({ theme }) => ({
   display: 'flex',
   flexFlow: 'column nowrap',
   width: '100%',
-  boxSizing: 'border-box',
   marginTop: '1.5rem',
 
   label: {

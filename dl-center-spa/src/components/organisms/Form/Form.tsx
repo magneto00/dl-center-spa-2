@@ -1,5 +1,5 @@
 import { FormProvider, useForm } from 'react-hook-form';
-import configForm from 'src/configForm';
+import configForm from 'src/translations/configForm';
 import { Button } from 'src/components/atoms';
 import { FormFields } from 'src/components/molecules';
 import * as S from './Form.styled';

@@ -28,10 +28,9 @@ const quotesNone = {
 };
 
 export default {
-  // ! why this throws an error??
-  // '*': {
-  //   boxSizing: 'border-box',
-  // },
+  '*': {
+    boxSizing: 'border-box',
+  },
   a: generics,
   abbr: generics,
   acronym: generics,
@@ -127,4 +126,4 @@ export default {
   ul: { ...generics, ...listStyleNone },
   var: generics,
   video: generics,
-};
+} as const;

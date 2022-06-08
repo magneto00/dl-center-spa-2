@@ -36,7 +36,7 @@ export default {
     standard: '3rem',
   },
   containerWidth: {
-    small: '65rem',
+    small: '70rem',
   },
   transition: {
     quick: '0.3s ease',

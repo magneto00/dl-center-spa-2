@@ -12,7 +12,7 @@ export function Results({ handleGoBackBtnClick, data }: Props) {
 
   return (
     <S.Wrapper>
-      <p>Thanks for submition, here you can download requested file:</p>
+      <p>Here you can download requested file:</p>
       <div>
         <Link href={link} openInNewTab>
           <S.Icon />

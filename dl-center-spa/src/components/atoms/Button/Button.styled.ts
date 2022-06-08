@@ -13,10 +13,6 @@ const Core = styled('div')(({ theme, btnTheme }: Props) => {
     border: 'none',
     cursor: 'pointer',
     transition: `opacity ${theme.transition.quick}`,
-
-    '&:hover, &:focus': {
-      opacity: 0.8,
-    },
   };
 
   switch (btnTheme) {
@@ -30,6 +26,10 @@ const Core = styled('div')(({ theme, btnTheme }: Props) => {
         borderRadius: theme.shape.borderRadius,
         boxShadow: theme.shadow.main,
         textDecoration: 'none',
+        '&:hover, &:focus': {
+          opacity: 0.8,
+          color: theme.colors.white.main,
+        },
       };
 
     default:
@@ -38,6 +38,10 @@ const Core = styled('div')(({ theme, btnTheme }: Props) => {
         textDecoration: 'underline',
         color: theme.colors.black,
         backgroundColor: 'transparent',
+        '&:hover, &:focus': {
+          opacity: 0.8,
+          color: theme.colors.black,
+        },
       };
   }
 });

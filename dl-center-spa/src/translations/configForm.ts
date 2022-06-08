@@ -1,4 +1,4 @@
-import { ConfigFormInterface } from './types';
+import { ConfigFormInterface } from 'src/types';
 
 export default {
   formFields: [
