@@ -34,18 +34,21 @@ function getSheetsFromFile(file) {
 }
 
 function getInstructionsFromSheets(sheets) {
-  const data = sheets.map(({ sheetName, content }) =>
-    content.map((row) => ({
-      device: sheetName,
-      language: row.defaultIFUlanguage,
-      version: row.softwareVersion,
-      software: row.software,
-      country: row.country,
-      notes: row.notes,
-      link: row.link,
-      uid: `${sheetName}-${row.country}`,
-    })),
-  );
+  const data = sheets.map(({ sheetName, content }) => {
+    return content.map((row) => {
+      return {
+        device: sheetName,
+        language: row.defaultIFUlanguage,
+        version: row.softwareVersion,
+        software: row.software,
+        country: row.country,
+        notes: row.notes,
+        link: row.link,
+        // TODO - there is an assumption that country is unique
+        uid: `${sheetName}-${row.country}`,
+      };
+    });
+  });
   return data.flat();
 }
 
@@ -92,9 +95,12 @@ function Component() {
 
       setStatus(FetchStatus.RESOLVED);
     } catch (e) {
+      setStatus(FetchStatus.REJECTED);
       setError(e.message);
     }
   }
+
+  const isButtonDisabled = !!error || !file;
 
   return (
     <Box padding={2}>
@@ -116,14 +122,12 @@ function Component() {
       <Box paddingTop={2}>
         <Form
           status={status}
-          isButtonDisabled={!!error || !file}
+          isButtonDisabled={isButtonDisabled}
           handleChange={handleChange}
           handleSubmit={handleSubmit}
           handleCloseSuccess={handleCloseSuccess}
         />
       </Box>
-      <Typography variant="delta">{status}</Typography>
-      <Typography variant="delta">{error}</Typography>
     </Box>
   );
 }

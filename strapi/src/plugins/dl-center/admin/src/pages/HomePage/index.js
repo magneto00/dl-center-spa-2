@@ -4,7 +4,7 @@ import { Flex } from '@strapi/design-system/Flex';
 import { Status } from '@strapi/design-system/Status';
 import { Typography } from '@strapi/design-system/Typography';
 import { BaseHeaderLayout, ContentLayout } from '@strapi/design-system/Layout';
-import FileUploadForm from '../../components/FileUploadForm';
+import { FileUploadForm } from '../../components/FileUploadForm/FileUploadForm';
 
 function HomePage() {
   return (

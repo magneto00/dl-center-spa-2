@@ -13,10 +13,6 @@ module.exports = ({ env }) => ({
       },
     },
   },
-  'dl-center-config': {
-    enabled: true,
-    resolve: './src/plugins/dl-center-config',
-  },
   'dl-center': {
     enabled: true,
     resolve: './src/plugins/dl-center',
