@@ -7,6 +7,9 @@
 const { createCoreService } = require('@strapi/strapi').factories;
 
 module.exports = createCoreService('plugin::dl-center.instruction', {
+  async findAll(query) {
+    return strapi.query('plugin::dl-center.instruction').findMany(query);
+  },
   async deleteInstructions() {
     await strapi.query('plugin::dl-center.instruction').deleteMany();
 

@@ -3,9 +3,10 @@ module.exports = {
     type: 'admin', // TODO ??? is it a real option?
     routes: [
       {
+        // example: http://localhost:1337/dl-center/instructions?filters[device][$eq]=IFU Skabelon&filters[country][$eq]=Afghanistan
         method: 'GET',
-        path: '/',
-        handler: 'instruction.index',
+        path: '/instructions',
+        handler: 'instruction.findAll',
         config: {
           policies: [],
           auth: false,
@@ -13,11 +14,10 @@ module.exports = {
       },
       {
         method: 'DELETE',
-        path: '/deleteAll',
+        path: '/instructions',
         handler: 'instruction.deleteAll',
         config: {
           policies: [],
-          auth: false,
         },
       },
       {
@@ -26,7 +26,6 @@ module.exports = {
         handler: 'instruction.createManyInstructions',
         config: {
           policies: [],
-          auth: false,
         },
       },
     ],

@@ -1,10 +1,14 @@
 /* eslint-disable class-methods-use-this */
+import { auth } from '@strapi/helper-plugin';
+
 class HttpClient {
   get(url, method = 'GET', body = undefined) {
     return new Promise((resolve, reject) => {
       fetch(url, {
         method,
         headers: {
+          Authorization: `Bearer ${auth.getToken()}`,
+          Accept: 'application/json',
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(body),
@@ -31,11 +35,11 @@ class HttpClient {
   }
 
   deleteAllInstructions() {
-    return this.delete('http://localhost:1337/dl-center/deleteAll');
+    return this.delete('/dl-center/instructions');
   }
 
   createInstructions(data) {
-    return this.post('http://localhost:1337/dl-center/instructions', data);
+    return this.post('/dl-center/instructions', data);
   }
 }
 

@@ -7,8 +7,11 @@
 const { createCoreController } = require('@strapi/strapi').factories;
 
 module.exports = createCoreController('plugin::dl-center.instruction', {
-  async index(ctx) {
-    ctx.body = 'Hello :D';
+  async findAll(ctx) {
+    ctx.body = await strapi
+      .plugin('dl-center')
+      .service('instruction')
+      .findAll(ctx.query);
   },
   async deleteAll(ctx) {
     try {
