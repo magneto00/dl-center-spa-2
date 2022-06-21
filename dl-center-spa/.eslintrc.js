@@ -46,5 +46,8 @@ module.exports = {
     'react/prop-types': 0,
     'arrow-body-style': 0,
     'react/jsx-props-no-spreading': 0,
+    // disable the base eslint/no-shadow rule as it can report incorrect errors
+    'no-shadow': 0,
+    '@typescript-eslint/no-shadow': 1,
   },
 };

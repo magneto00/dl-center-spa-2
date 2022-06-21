@@ -7,7 +7,7 @@ export const Section = styled('section')(({ theme }) => ({
   maxWidth: theme.containerWidth.small,
 }));
 
-export const Description = styled(Html)(({ theme }) => ({
+export const Description = styled(Html)(() => ({
   ul: {
     listStyle: 'circle inside',
   },

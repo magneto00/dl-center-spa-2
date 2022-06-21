@@ -40,9 +40,18 @@ export type ConfigFormInterface = {
   submitButton: { [index: string]: string };
 };
 
-export type FileInterface = {
-  title: string;
-  version: string;
+export type InstructionInterface = {
+  device: string;
+  country: string;
   language: string;
+  software: string;
+  version: string;
+  notes: string;
   link: string;
+  uid: string;
+};
+
+export type FormOptionsInterface = {
+  countries: string[];
+  devices: string[];
 };

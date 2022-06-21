@@ -1,15 +1,10 @@
-type Props = {
-  className?: string;
-};
-
-export function DownloadFileIcon({ className }: Props) {
+export function IconDownloadFile() {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
       viewBox="6.519 4.688 80.202 100"
       width="80.202"
       height="100"
-      className={className}
     >
       <g
         fill="none"

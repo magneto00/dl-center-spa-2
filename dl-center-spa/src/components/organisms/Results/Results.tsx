@@ -1,24 +1,25 @@
-import { Button, Link } from 'src/components/atoms';
-import { FileInterface } from 'src/types';
+import { Button } from 'src/components/atoms';
+import { IconDownloadFile } from 'src/components/atoms/icons';
+import { InstructionInterface } from 'src/types';
 import * as S from './Results.styled';
 
 type Props = {
   handleGoBackBtnClick: () => void;
-  data: FileInterface;
+  data: InstructionInterface;
 };
 
 export function Results({ handleGoBackBtnClick, data }: Props) {
-  const { link, title, language, version } = data;
+  const { device, country, language, version, link } = data;
 
   return (
     <S.Wrapper>
-      <p>Here you can download requested file:</p>
+      <p>
+        Here you can download requested file for {device} in {country}:
+      </p>
       <div>
-        <Link href={link} openInNewTab>
-          <S.Icon />
-        </Link>
+        <IconDownloadFile />
         <S.Description>
-          <S.Title>{`${title} (${language})`}</S.Title>
+          <S.Title>{`IFU for ${device} (${language})`}</S.Title>
           <span>software version: {version}</span>
         </S.Description>
         <S.DownloadButton

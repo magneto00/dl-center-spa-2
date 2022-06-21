@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
-import { DownloadFileIcon, Button } from 'src/components/atoms';
+import { Button } from 'src/components/atoms';
 
-export const Wrapper = styled('div')(({ theme }) => ({
+export const Wrapper = styled('div')(() => ({
   height: '100%',
   textAlign: 'center',
   display: 'flex',
@@ -10,21 +10,7 @@ export const Wrapper = styled('div')(({ theme }) => ({
   alignItems: 'center',
 }));
 
-export const Icon = styled(DownloadFileIcon)(({ theme }) => ({
-  color: theme.colors.black,
-
-  '#arrow': {
-    transition: `transform ${theme.transition.quick}`,
-  },
-
-  '&:hover, &:focus': {
-    '#arrow': {
-      transform: 'translateY(1rem)',
-    },
-  },
-}));
-
-export const Description = styled('div')(({ theme }) => ({
+export const Description = styled('div')(() => ({
   margin: '2rem auto',
 }));
 
@@ -33,7 +19,7 @@ export const Title = styled('span')(({ theme }) => ({
   display: 'block',
 }));
 
-export const DownloadButton = styled(Button)(({ theme }) => ({
+export const DownloadButton = styled(Button)(() => ({
   display: 'block',
   margin: 'auto',
 }));
