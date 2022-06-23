@@ -42,4 +42,18 @@ module.exports = createCoreController('plugin::dl-center.instruction', {
       });
     }
   },
+  async getOptions(ctx) {
+    try {
+      const options = await strapi
+        .plugin('dl-center')
+        .service('instruction')
+        .queryDistinctOptions();
+
+      ctx.body = { options };
+    } catch (e) {
+      ctx.badRequest('Failed to retrieve options.', {
+        message: e.message,
+      });
+    }
+  },
 });

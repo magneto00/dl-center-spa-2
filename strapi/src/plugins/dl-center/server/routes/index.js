@@ -28,6 +28,15 @@ module.exports = {
           policies: [],
         },
       },
+      {
+        method: 'GET',
+        path: '/instructions/options',
+        handler: 'instruction.getOptions',
+        config: {
+          policies: [],
+          auth: false,
+        },
+      },
     ],
   },
 };

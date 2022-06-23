@@ -25,4 +25,20 @@ module.exports = createCoreService('plugin::dl-center.instruction', {
       data: instructions,
     });
   },
+  async queryDistinctOptions() {
+    const devices = await strapi.db.connection
+      .distinct()
+      .from('instructions')
+      .pluck('device')
+      .orderBy('device');
+    const countries = await strapi.db.connection
+      .distinct()
+      .from('instructions')
+      .pluck('country')
+      .orderBy('country');
+    return {
+      devices,
+      countries,
+    };
+  },
 });
