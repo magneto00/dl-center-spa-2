@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { api } from 'src/api/api';
+import { ErrorMsg } from 'src/components/molecules';
 import { Form, Results } from 'src/components/organisms';
 import { IconLoading } from 'src/components/atoms/icons';
+import errorsTexts from 'src/translations/textsErrors';
 import * as S from './DLCenter.styled';
 
 enum AppStatus {
@@ -28,6 +30,7 @@ const initialStates = {
     countries: [''],
     devices: [''],
   },
+  errorMsg: '',
 };
 
 function DLCenterContent() {
@@ -35,6 +38,7 @@ function DLCenterContent() {
   const [appStatus, setAppStatus] = useState(initialStates.appStatus);
   const [instruction, setInstruction] = useState(initialStates.instruction);
   const [formOptions, setFormOptions] = useState(initialStates.formOptions);
+  const [errorMsg, setErrorMsg] = useState(initialStates.errorMsg);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,6 +47,7 @@ function DLCenterContent() {
         setFormOptions(response);
         setAppStatus(AppStatus.INITIAL);
       } catch (error) {
+        setErrorMsg(errorsTexts.errorInit);
         setAppStatus(AppStatus.FAIL);
       }
     };
@@ -57,9 +62,16 @@ function DLCenterContent() {
           formData.country,
           formData.device,
         );
-        setInstruction(response);
-        setAppStatus(AppStatus.SUCCESS);
+
+        if (response) {
+          setInstruction(response);
+          setAppStatus(AppStatus.SUCCESS);
+        } else {
+          setErrorMsg(errorsTexts.errorNoData);
+          setAppStatus(AppStatus.FAIL);
+        }
       } catch {
+        setErrorMsg(errorsTexts.errorFetch);
         setAppStatus(AppStatus.FAIL);
       }
     };
@@ -90,9 +102,9 @@ function DLCenterContent() {
         />
       );
     case AppStatus.FAIL:
-      return <div>fetch error</div>;
+      return <ErrorMsg message={errorMsg} />;
     default:
-      return <div>huge error, call the cops</div>;
+      return <ErrorMsg message={errorsTexts.errorFatal} />;
   }
 }
 

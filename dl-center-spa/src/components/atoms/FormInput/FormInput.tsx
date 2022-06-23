@@ -28,7 +28,16 @@ const configValidation = (validation: FormInputInterface['validation']) => {
 };
 
 export function FormInput({ input }: Props) {
-  const { disabled, id, label, name, placeholder, type, validation } = input;
+  const {
+    disabled,
+    id,
+    label,
+    name,
+    placeholder,
+    type,
+    validation,
+    autoComplete,
+  } = input;
 
   const {
     register,
@@ -48,6 +57,7 @@ export function FormInput({ input }: Props) {
         id={id}
         placeholder={placeholder}
         disabled={disabled}
+        autoComplete={autoComplete}
         {...registerInput}
       />
       {error && <FormFieldError message={error.message} />}
