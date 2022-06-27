@@ -1,6 +1,5 @@
 import { InstructionInterface, FormOptionsInterface } from 'src/types';
-import { getUniqueItems } from 'src/utils/getUniqueItems';
-import { InstructionsStrapiResponse } from './types';
+import { InstructionsStrapiResponse, OptionsStrapiResponse } from './types';
 
 /* eslint-disable class-methods-use-this */
 class HttpClient {
@@ -29,29 +28,18 @@ class HttpClient {
     country: string,
     device: string,
   ): Promise<InstructionInterface> {
-    const response = await this.get<InstructionsStrapiResponse>(
+    const [instruction] = await this.get<InstructionsStrapiResponse>(
       `${process.env.REACT_APP_STRAPI_DLCENTER_ENDPOINT}/instructions?filters[country][$eq]=${country}&filters[device][$eq]=${device}`,
     );
-    return response[0];
+    return instruction;
   }
 
-  public async getFormOptions(): Promise<FormOptionsInterface> {
-    const instructions = await this.get<InstructionsStrapiResponse>(
-      `${process.env.REACT_APP_STRAPI_DLCENTER_ENDPOINT}/instructions`,
+  public async getOptions(): Promise<FormOptionsInterface> {
+    const { options } = await this.get<OptionsStrapiResponse>(
+      `${process.env.REACT_APP_STRAPI_DLCENTER_ENDPOINT}/instructions/options`,
     );
 
-    const allCountries = instructions.map((instruction) => instruction.country);
-    const uniqueCountries = getUniqueItems(allCountries).sort();
-
-    const allDevices = instructions.map((instruction) => instruction.device);
-    const uniqueDevices = getUniqueItems(allDevices).sort();
-
-    const formOptions = {
-      countries: uniqueCountries,
-      devices: uniqueDevices,
-    };
-
-    return formOptions;
+    return options;
   }
 }
 

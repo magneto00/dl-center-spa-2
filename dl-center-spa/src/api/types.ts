@@ -11,3 +11,10 @@ export type InstructionsStrapiResponse = {
   createdAt: string;
   updatedAt: string;
 }[];
+
+export type OptionsStrapiResponse = {
+  options: {
+    devices: string[];
+    countries: string[];
+  };
+};

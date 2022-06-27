@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
 import { FormProvider, useForm } from 'react-hook-form';
 import { api } from 'src/api/api';
+import { IconLoading } from 'src/components/atoms/icons';
 import { ErrorMsg } from 'src/components/molecules';
 import { Form, Results } from 'src/components/organisms';
-import { IconLoading } from 'src/components/atoms/icons';
 import errorsTexts from 'src/translations/textsErrors';
 import * as S from './DLCenter.styled';
 
@@ -43,14 +43,21 @@ function DLCenterContent() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await api.getFormOptions();
-        setFormOptions(response);
-        setAppStatus(AppStatus.INITIAL);
+        const response = await api.getOptions();
+
+        if (response.countries.length && response.devices.length) {
+          setFormOptions(response);
+          setAppStatus(AppStatus.INITIAL);
+        } else {
+          setErrorMsg(errorsTexts.errorInit);
+          setAppStatus(AppStatus.FAIL);
+        }
       } catch (error) {
         setErrorMsg(errorsTexts.errorInit);
         setAppStatus(AppStatus.FAIL);
       }
     };
+
     fetchData();
   }, []);
 
@@ -75,6 +82,7 @@ function DLCenterContent() {
         setAppStatus(AppStatus.FAIL);
       }
     };
+
     fetchData();
   });
 
