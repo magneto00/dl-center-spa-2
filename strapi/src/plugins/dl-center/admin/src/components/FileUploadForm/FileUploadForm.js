@@ -38,7 +38,7 @@ function getInstructionsFromSheets(sheets) {
     return content.map((row) => {
       return {
         device: sheetName,
-        language: row.defaultIFUlanguage,
+        language: row.defaultIFUlanguages,
         version: row.softwareVersion,
         software: row.software,
         country: row.country,
