@@ -49,7 +49,10 @@ export default (formOptions: FormOptionsInterface) =>
           required: true,
           minLength: undefined,
           maxLength: undefined,
-          pattern: undefined,
+          // pattern matching Pardot specs
+          // https://help.salesforce.com/s/articleView?language=en_US&type=5&id=sf.pardot_emails_allowed_characters.htm
+          pattern:
+            /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/i,
         },
       },
     ],

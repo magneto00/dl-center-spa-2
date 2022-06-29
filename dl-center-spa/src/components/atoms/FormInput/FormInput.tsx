@@ -22,7 +22,7 @@ const configValidation = (validation: FormInputInterface['validation']) => {
     },
     pattern: pattern && {
       value: pattern,
-      message: `The value needs to match this pattern: ${pattern}`,
+      message: 'Please insert the value in correct format',
     },
   };
 };
